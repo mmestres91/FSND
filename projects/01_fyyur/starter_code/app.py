@@ -5,6 +5,7 @@
 import json
 import dateutil.parser
 import babel
+from datetime import date
 from flask import Flask, render_template, request, Response, flash, redirect, url_for
 from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
@@ -12,6 +13,7 @@ from flask_migrate import Migrate
 import logging
 from logging import Formatter, FileHandler
 from flask_wtf import Form
+import os
 from forms import *
 #----------------------------------------------------------------------------#
 # App Config.
@@ -21,6 +23,8 @@ app = Flask(__name__)
 moment = Moment(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://postgres:1234@localhost:5432/fyyur'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+SECRET_KEY = os.urandom(32)
+app.config['SECRET_KEY'] = SECRET_KEY
 db = SQLAlchemy(app)
 
 migrate = Migrate(app, db)
@@ -150,24 +154,46 @@ def search_venues():
 def show_venue(Venue_id):
   # shows the venue page with the given venue_id
   # TODO: replace with real venue data from the venues table, using venue_id
-  data2={
-    "id": 2,
-    "name": "The Dueling Pianos Bar",
-    "genres": ["Classical", "R&B", "Hip-Hop"],
-    "address": "335 Delancey Street",
-    "city": "New York",
-    "state": "NY",
-    "phone": "914-003-1132",
-    "website": "https://www.theduelingpianos.com",
-    "facebook_link": "https://www.facebook.com/theduelingpianos",
-    "seeking_talent": False,
-    "image_link": "https://images.unsplash.com/photo-1497032205916-ac775f0649ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
-    "past_shows": [],
-    "upcoming_shows": [],
-    "past_shows_count": 0,
-    "upcoming_shows_count": 0,
+  venue = Venue.query.get(Venue_id)
+  upcoming_shows = Shows.query.join(Artist).filter(Shows.Venue_id==Venue_id).filter(Shows.start_time>datetime.now()).all()
+  past_shows = Shows.query.join(Artist).filter(Shows.Venue_id==Venue_id).filter(Shows.start_time<datetime.now()).all()
+
+  upcomingshows = []
+  for show in upcoming_shows:
+    upcomingshows.append({
+      "artist_id": show.Artist_id,
+      "artist_name": show.artists.name,
+      "artist_image_link": show.artists.image_link,
+      "start_time": show.start_time.strftime("%m/%d/%Y, %H:%M")
+    })
+
+  pastshows = []
+  for show in past_shows:
+    pastshows.append({
+      "artist_id": show.Artist_id,
+      "artist_name": show.artists.name,
+      "artist_image_link": show.artists.image_link,
+      "start_time": show.start_time.strftime("%m/%d/%Y, %H:%M")
+    })
+
+  data={
+    "id": venue.id,
+    "name": venue.name,
+    "city": venue.city,
+    "state": venue.state,
+    "address": venue.address,
+    "phone": venue.phone,
+    "image_link": venue.image_link,
+    "facebook_link": venue.facebook_link,
+    "website": venue.website,
+    "seeking_description": venue.seeking_description,
+    "seeking_talent": venue.seeking_talent,
+    "upcoming_shows": upcomingshows,
+    "past_shows": pastshows,
+    "past_shows_count": len(pastshows),
+    "upcoming_shows_count": len(upcomingshows),
   }
-  data = Venue.query.get(Venue_id)
+
   return render_template('pages/show_venue.html', venue=data)
 
 #  Create Venue
@@ -180,9 +206,19 @@ def create_venue_form():
 
 @app.route('/venues/create', methods=['POST'])
 def create_venue_submission():
+  try:
+    venuename = request.form['name']
+    venueaddress = request.form['address']
+    newvenue = Venue(name=venuename)
+    newvenue.address = venueaddress
+    db.session.add(newvenue)
+    db.session.commit()
+  except Exception:
+    db.session.rollback()
+  finally:
+    db.session.close()
   # TODO: insert form data as a new Venue record in the db, instead
   # TODO: modify data to be the data object returned from db insertion
-
   # on successful db insert, flash success
   flash('Venue ' + request.form['name'] + ' was successfully listed!')
   # TODO: on unsuccessful db insert, flash an error instead.
