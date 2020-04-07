@@ -41,6 +41,9 @@
 			<i class="fas fa-moon"></i> Not currently seeking talent
 		</p>
 		{% endif %}
+		<p>
+			<button id="delete-button" data-id ="{{ venue.id }}">DELETE</button>
+		</p>
 	</div>
 	<div class="col-sm-6">
 		<img src="{{ venue.image_link }}" alt="Venue Image" />
@@ -74,6 +77,19 @@
 		{% endfor %}
 	</div>
 </section>
+<script>
+	const deletebtn = document.getElementById('delete-button')
+	deletebtn.onclick = function(e) {
+		const venueId = e.target.dataset['id']
+		fetch('/venues/delete/' + venueId, {
+			method: "POST"
+		})
+		.then(function(repsonse){
+			window.location.href = "/"
+			}
+		)
+	}                         
+</script>
 
 {% endblock %}
 
