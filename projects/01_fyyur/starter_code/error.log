@@ -214,3 +214,277 @@ RuntimeError: A secret key is required to use CSRF.
 2020-04-04 17:26:28,341 INFO: errors [in C:\Users\Mark\Documents\GitHub\FSND\projects\01_fyyur\starter_code\app.py:514]
 2020-04-04 17:30:12,793 INFO: errors [in C:\Users\Mark\Documents\GitHub\FSND\projects\01_fyyur\starter_code\app.py:514]
 2020-04-04 17:30:54,775 INFO: errors [in C:\Users\Mark\Documents\GitHub\FSND\projects\01_fyyur\starter_code\app.py:514]
+2020-04-09 21:59:43,494 INFO: errors [in C:\Users\Mark\Documents\GitHub\FSND\projects\01_fyyur\starter_code\app.py:531]
+2020-04-09 22:01:32,889 INFO: errors [in app.py:531]
+2020-04-09 22:01:44,292 ERROR: Exception on /venues [GET] [in C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 115, in venues
+    areas = Venue.query.distinct('city','state').all()
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask_sqlalchemy\__init__.py", line 517, in __get__
+    mapper = orm.class_mapper(type)
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\sqlalchemy\orm\base.py", line 433, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\sqlalchemy\orm\base.py", line 412, in _inspect_mapped_class
+    mapper._configure_all()
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\sqlalchemy\orm\mapper.py", line 1315, in _configure_all
+    configure_mappers()
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\sqlalchemy\orm\mapper.py", line 3194, in configure_mappers
+    mapper._post_configure_properties()
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\sqlalchemy\orm\mapper.py", line 1924, in _post_configure_properties
+    prop.init()
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\sqlalchemy\orm\interfaces.py", line 192, in init
+    self.do_init()
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\sqlalchemy\orm\relationships.py", line 1757, in do_init
+    self._process_dependent_arguments()
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\sqlalchemy\orm\relationships.py", line 1819, in _process_dependent_arguments
+    self.target = self.mapper.mapped_table
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\sqlalchemy\util\langhelpers.py", line 839, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\sqlalchemy\orm\relationships.py", line 1742, in mapper
+    % (self.key, type(argument))
+sqlalchemy.exc.ArgumentError: relationship 'Show' expects a class or a mapper argument (received: <class 'sqlalchemy.sql.schema.Table'>)
+2020-04-09 22:01:49,090 ERROR: Exception on /venues [GET] [in C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 115, in venues
+    areas = Venue.query.distinct('city','state').all()
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask_sqlalchemy\__init__.py", line 517, in __get__
+    mapper = orm.class_mapper(type)
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\sqlalchemy\orm\base.py", line 433, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\sqlalchemy\orm\base.py", line 412, in _inspect_mapped_class
+    mapper._configure_all()
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\sqlalchemy\orm\mapper.py", line 1315, in _configure_all
+    configure_mappers()
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\sqlalchemy\orm\mapper.py", line 3191, in configure_mappers
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper|Venue|Venue'. Original exception was: relationship 'Show' expects a class or a mapper argument (received: <class 'sqlalchemy.sql.schema.Table'>)
+2020-04-09 22:01:51,549 ERROR: Exception on /venues [GET] [in C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 115, in venues
+    areas = Venue.query.distinct('city','state').all()
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask_sqlalchemy\__init__.py", line 517, in __get__
+    mapper = orm.class_mapper(type)
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\sqlalchemy\orm\base.py", line 433, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\sqlalchemy\orm\base.py", line 412, in _inspect_mapped_class
+    mapper._configure_all()
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\sqlalchemy\orm\mapper.py", line 1315, in _configure_all
+    configure_mappers()
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\sqlalchemy\orm\mapper.py", line 3191, in configure_mappers
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper|Venue|Venue'. Original exception was: relationship 'Show' expects a class or a mapper argument (received: <class 'sqlalchemy.sql.schema.Table'>)
+2020-04-09 22:01:54,846 ERROR: Exception on /venues [GET] [in C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 115, in venues
+    areas = Venue.query.distinct('city','state').all()
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask_sqlalchemy\__init__.py", line 517, in __get__
+    mapper = orm.class_mapper(type)
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\sqlalchemy\orm\base.py", line 433, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\sqlalchemy\orm\base.py", line 412, in _inspect_mapped_class
+    mapper._configure_all()
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\sqlalchemy\orm\mapper.py", line 1315, in _configure_all
+    configure_mappers()
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\sqlalchemy\orm\mapper.py", line 3191, in configure_mappers
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper|Venue|Venue'. Original exception was: relationship 'Show' expects a class or a mapper argument (received: <class 'sqlalchemy.sql.schema.Table'>)
+2020-04-09 22:01:58,245 ERROR: Exception on /venues/2 [GET] [in C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 157, in show_venue
+    venue = Venue.query.get(Venue_id)
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\flask_sqlalchemy\__init__.py", line 517, in __get__
+    mapper = orm.class_mapper(type)
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\sqlalchemy\orm\base.py", line 433, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\sqlalchemy\orm\base.py", line 412, in _inspect_mapped_class
+    mapper._configure_all()
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\sqlalchemy\orm\mapper.py", line 1315, in _configure_all
+    configure_mappers()
+  File "C:\Users\Mark\AppData\Local\Programs\Python\Python37\lib\site-packages\sqlalchemy\orm\mapper.py", line 3191, in configure_mappers
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper|Venue|Venue'. Original exception was: relationship 'Show' expects a class or a mapper argument (received: <class 'sqlalchemy.sql.schema.Table'>)
+2020-04-09 22:03:04,465 INFO: errors [in C:\Users\Mark\Documents\GitHub\FSND\projects\01_fyyur\starter_code\app.py:531]
+2020-04-09 22:03:19,620 INFO: errors [in C:\Users\Mark\Documents\GitHub\FSND\projects\01_fyyur\starter_code\app.py:531]
+2020-04-09 22:03:46,016 INFO: errors [in C:\Users\Mark\Documents\GitHub\FSND\projects\01_fyyur\starter_code\app.py:531]
+2020-04-09 22:05:45,638 INFO: errors [in C:\Users\Mark\Documents\GitHub\FSND\projects\01_fyyur\starter_code\app.py:531]
+2020-04-09 22:05:51,903 ERROR: Exception on /venues [GET] [in c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\Mark\Documents\GitHub\FSND\projects\01_fyyur\starter_code\app.py", line 115, in venues
+    areas = Venue.query.distinct('city','state').all()
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\flask_sqlalchemy\__init__.py", line 517, in __get__
+    mapper = orm.class_mapper(type)
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\sqlalchemy\orm\base.py", line 433, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\sqlalchemy\orm\base.py", line 412, in _inspect_mapped_class
+    mapper._configure_all()
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\sqlalchemy\orm\mapper.py", line 1315, in _configure_all
+    configure_mappers()
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\sqlalchemy\orm\mapper.py", line 3194, in configure_mappers
+    mapper._post_configure_properties()
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\sqlalchemy\orm\mapper.py", line 1924, in _post_configure_properties
+    prop.init()
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\sqlalchemy\orm\interfaces.py", line 192, in init
+    self.do_init()
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\sqlalchemy\orm\relationships.py", line 1757, in do_init
+    self._process_dependent_arguments()
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\sqlalchemy\orm\relationships.py", line 1819, in _process_dependent_arguments
+    self.target = self.mapper.mapped_table
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\sqlalchemy\util\langhelpers.py", line 839, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\sqlalchemy\orm\relationships.py", line 1742, in mapper
+    % (self.key, type(argument))
+sqlalchemy.exc.ArgumentError: relationship 'Show' expects a class or a mapper argument (received: <class 'sqlalchemy.sql.schema.Table'>)
+2020-04-09 22:08:04,788 ERROR: Exception on /venues [GET] [in c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\Mark\Documents\GitHub\FSND\projects\01_fyyur\starter_code\app.py", line 115, in venues
+    areas = Venue.query.distinct('city','state').all()
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\flask_sqlalchemy\__init__.py", line 517, in __get__
+    mapper = orm.class_mapper(type)
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\sqlalchemy\orm\base.py", line 433, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\sqlalchemy\orm\base.py", line 412, in _inspect_mapped_class
+    mapper._configure_all()
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\sqlalchemy\orm\mapper.py", line 1315, in _configure_all
+    configure_mappers()
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\sqlalchemy\orm\mapper.py", line 3191, in configure_mappers
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper|Venue|Venue'. Original exception was: relationship 'Show' expects a class or a mapper argument (received: <class 'sqlalchemy.sql.schema.Table'>)
+2020-04-09 22:08:08,342 ERROR: Exception on /venues [GET] [in c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\Mark\Documents\GitHub\FSND\projects\01_fyyur\starter_code\app.py", line 115, in venues
+    areas = Venue.query.distinct('city','state').all()
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\flask_sqlalchemy\__init__.py", line 517, in __get__
+    mapper = orm.class_mapper(type)
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\sqlalchemy\orm\base.py", line 433, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\sqlalchemy\orm\base.py", line 412, in _inspect_mapped_class
+    mapper._configure_all()
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\sqlalchemy\orm\mapper.py", line 1315, in _configure_all
+    configure_mappers()
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\sqlalchemy\orm\mapper.py", line 3191, in configure_mappers
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper|Venue|Venue'. Original exception was: relationship 'Show' expects a class or a mapper argument (received: <class 'sqlalchemy.sql.schema.Table'>)
+2020-04-09 22:08:10,515 ERROR: Exception on /venues [GET] [in c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\Mark\Documents\GitHub\FSND\projects\01_fyyur\starter_code\app.py", line 115, in venues
+    areas = Venue.query.distinct('city','state').all()
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\flask_sqlalchemy\__init__.py", line 517, in __get__
+    mapper = orm.class_mapper(type)
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\sqlalchemy\orm\base.py", line 433, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\sqlalchemy\orm\base.py", line 412, in _inspect_mapped_class
+    mapper._configure_all()
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\sqlalchemy\orm\mapper.py", line 1315, in _configure_all
+    configure_mappers()
+  File "c:\users\mark\appdata\local\programs\python\python37\lib\site-packages\sqlalchemy\orm\mapper.py", line 3191, in configure_mappers
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper|Venue|Venue'. Original exception was: relationship 'Show' expects a class or a mapper argument (received: <class 'sqlalchemy.sql.schema.Table'>)
+2020-04-09 22:08:39,645 INFO: errors [in C:\Users\Mark\Documents\GitHub\FSND\projects\01_fyyur\starter_code\app.py:531]
