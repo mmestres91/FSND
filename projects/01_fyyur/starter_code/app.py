@@ -219,6 +219,10 @@ def create_venue_submission():
   finally:
     db.session.close()
   return render_template('pages/home.html')
+
+
+
+  
   
 
 @app.route('/venues/delete/<Venue_id>', methods=['POST'])
