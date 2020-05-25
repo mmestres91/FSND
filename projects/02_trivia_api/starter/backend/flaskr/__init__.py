@@ -1,5 +1,5 @@
-import os
-from flask import Flask, request, abort, jsonify
+import os, jsons
+from flask import Flask, request, abort, jsonify, json
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 import random
@@ -12,20 +12,30 @@ def create_app(test_config=None):
   # create and configure the app
   app = Flask(__name__)
   setup_db(app)
+  CORS(app, resources={r"/api/*": {"origins": "*"}})
   
-  '''
-  @TODO: Set up CORS. Allow '*' for origins. Delete the sample route after completing the TODOs
-  '''
-
-  '''
-  @TODO: Use the after_request decorator to set Access-Control-Allow
-  '''
+  @app.after_request
+  def after_request(response):
+    response.headers.add('Access-Control_Allow-Headers', 'Content-Type')
+    response.headers.add('Access-Control_Allow-Methods', 'GET,PATCH,POST,DELETE,OPTIONS')
+    return response
 
   '''
   @TODO: 
   Create an endpoint to handle GET requests 
   for all available categories.
   '''
+  @app.route('/categories')
+  def category():
+    result = Category.query.all()
+    print(result)
+    categories = []
+    for category in result:
+      categories.append({
+        category.id: category.type
+      })
+    print(categories)
+    return jsonify(categories)
 
 
   '''

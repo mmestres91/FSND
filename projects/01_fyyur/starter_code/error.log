@@ -488,3 +488,4 @@ Traceback (most recent call last):
     raise e
 sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper|Venue|Venue'. Original exception was: relationship 'Show' expects a class or a mapper argument (received: <class 'sqlalchemy.sql.schema.Table'>)
 2020-04-09 22:08:39,645 INFO: errors [in C:\Users\Mark\Documents\GitHub\FSND\projects\01_fyyur\starter_code\app.py:531]
+2020-04-13 12:17:15,157 INFO: errors [in C:\Users\Mark\Documents\GitHub\FSND\projects\01_fyyur\starter_code\app.py:484]
