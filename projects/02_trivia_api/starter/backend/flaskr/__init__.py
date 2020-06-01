@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 import random
 
-from models import setup_db, Question, Category
+from models import setup_db, Question, Category, db
 
 QUESTIONS_PER_PAGE = 10
 
@@ -25,18 +25,16 @@ def create_app(test_config=None):
   Create an endpoint to handle GET requests 
   for all available categories.
   '''
-  @app.route('/categories')
-  def category():
+  @app.route('/categories', methods=['GET'])
+  def get_category():
     result = Category.query.all()
-    print(result)
-    categories = []
+    categories = {}
     for category in result:
-      categories.append({
-        category.id: category.type
+      categories.update({category.id: category.type})
+    return jsonify({
+      'success': True,
+      'categories': categories
       })
-    print(categories)
-    return jsonify(categories)
-
 
   '''
   @TODO: 
@@ -51,6 +49,25 @@ def create_app(test_config=None):
   Clicking on the page numbers should update the questions. 
   '''
 
+  @app.route('/questions', methods=['GET'])
+  def get_questions():
+    page = request.args.get('page', 1, type=int)
+    start = (page - 1) * 10
+    end = start + 10
+    questions = Question.query.all()
+    result = Category.query.all()
+    categories = {}
+    for category in result:
+      categories.update({category.id: category.type})
+    formatted_questions = [question.format() for question in questions]
+
+    return jsonify({
+      'success': True,
+      'questions': formatted_questions[start:end],
+      'total_questions': len(questions),
+      'categories': categories
+    })
+
   '''
   @TODO: 
   Create an endpoint to DELETE question using a question ID. 
@@ -59,6 +76,18 @@ def create_app(test_config=None):
   This removal will persist in the database and when you refresh the page. 
   '''
 
+  @app.route('/questions/<question_id>', methods=['DELETE'])
+  def delete_questions(question_id):
+    try:
+      question = Question.query.get(question_id)
+      Question.delete(question)
+    except Exception:
+      db.session.rollback()
+    finally:
+      db.session.close()
+    return jsonify({
+      "sucess": True
+    })
   '''
   @TODO: 
   Create an endpoint to POST a new question, 
@@ -69,7 +98,22 @@ def create_app(test_config=None):
   the form will clear and the question will appear at the end of the last page
   of the questions list in the "List" tab.  
   '''
-
+  @app.route('/questions', methods=['POST'])
+  def add_question():
+    try:
+      question = request.get_json()['question']
+      answer = request.get_json()['answer']
+      difficulty = request.get_json()['difficulty']
+      category = request.get_json()['category']
+      newquestion = Question(question=question, answer=answer, category=category, difficulty=difficulty)
+      newquestion.insert()
+    except Exception:
+      db.session.rollback()
+    finally:
+      db.session.close()
+    return jsonify({
+      "sucess": True
+    })
   '''
   @TODO: 
   Create a POST endpoint to get questions based on a search term. 
